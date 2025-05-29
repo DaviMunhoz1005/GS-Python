@@ -1,3 +1,17 @@
 # Nome: Davi Marques de Andrade Munhoz     RM: 566223
 # Nome: Gabriel Ciriaco de Oliveira Silva  RM: 565916
 # Nome: Mariana Souza França               RM: 562353
+
+# Biblioteca para pegar valores aleatórios para a simulação do sensor
+import random
+
+def read_water_level() -> float:
+    return round(random.uniform(0.0, 5.0), 2)
+
+def classify_water_level(level) -> str:
+    if level < 1.0:
+        return "PERIGO"
+    elif 1.0 < level < 1.5:
+        return "ALERTA"
+    else:
+        return "OK"
