@@ -8,7 +8,7 @@ import random
 def read_water_level() -> float:
     return round(random.uniform(0.0, 5.0), 2)
 
-def classify_water_level(level) -> str:
+def classify_water_level(level: float) -> str:
     if level < 1.0:
         return "PERIGO"
     elif 1.0 < level < 1.5:
