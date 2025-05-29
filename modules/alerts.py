@@ -66,3 +66,11 @@ def send_email(destination: str, message: str) -> bool:
 def send_sms(destination: str, message: str) -> bool:
     print(f"[SMS] Enviado para {destination}: {message}")
     return True
+
+
+def show_alerts_history():
+    if not alerts_list:
+        print("Nenhum alerta emitido!")
+        return
+    for alert in alerts_list:
+        print(f"| {alert["data e hora"]} | {alert["nivel"]} | {alert["mensagem"]} | {alert["usuarios_notificados"]} |")

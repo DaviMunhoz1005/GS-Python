@@ -2,8 +2,9 @@
 # Nome: Gabriel Ciriaco de Oliveira Silva  RM: 565916
 # Nome: Mariana Souza França               RM: 562353
 
+# import das funções dos modulós que foram criados
 from modules.monitoring import read_water_level, classify_water_level
-from modules.alerts import notify_alert
+from modules.alerts import notify_alert, show_alerts_history
 from modules.register import register_user, display_list_users, list_users
 from modules.interface import show_menu
 
@@ -34,6 +35,7 @@ def clear_terminal():
     else:
         os.system('clear')
 
+
 # Execução principal
 if __name__ == "__main__":
     while True:
@@ -43,7 +45,7 @@ if __name__ == "__main__":
             painel_tempo_real()
         elif option == "2":
             clear_terminal()
-            name = input("Nome: ")
+            name = input("Nome e Sobrenome: ")
             email = input("Email: ")
             phone = input("Telefone: ")
             contact_chanel = input("Canal preferido (email/sms): ")
@@ -51,9 +53,9 @@ if __name__ == "__main__":
         elif option == "3":
             clear_terminal()
             display_list_users()
-            # elif option == "4":
-            # clear_terminal()
-            # show_alerts_history()
+        elif option == "4":
+            clear_terminal()
+            show_alerts_history()
         elif option == "0":
             clear_terminal()
             print("Saindo...")

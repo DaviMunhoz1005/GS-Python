@@ -8,13 +8,32 @@ import re
 # Bilioteca para manipular data e hora
 from datetime import datetime
 
+
+# valida se o formato do nome está correto
+def validate_name(name: str) -> bool:
+    name = name.strip()
+    pattern = r"^[A-Za-zÀ-ÖØ-öø-ÿ]+( [A-Za-zÀ-ÖØ-öø-ÿ]+)+$"
+    return bool(re.match(pattern, name))
+
+
 # valida se o formato do email está correto
-def validate_email(email: str) -> str:
-    return str(re.match(r"^[\w\.-]+@[\w\.-]+\.\w{2,}$", email.strip()))
+def validate_email(email: str) -> bool:
+    email = email.strip()
+    pattern = r'^[\w\.-]+@[\w\.-]+\.\w{3,}$'
+    return bool(re.match(pattern, email))
+
 
 # valida se o formato do telefone está correto tendo apenas 11 dígitos
-def validate_phone(phone: str) -> str:
-    return str(re.match(r"^\d{11}$", phone.strip()))
+def validate_phone(phone: str) -> bool:
+    phone = phone.strip()
+    pattern = r'^\d{11}$'
+    return bool(re.match(pattern, phone))
+
+
+# valida se o formato do telefone está correto tendo apenas 11 dígitos
+def validate_contact_channel(contact_channel: str) -> bool:
+    return not (contact_channel != 'email' or contact_channel != 'sms')
+
 
 # gera a data e hora do momento que foi chamado em formato dia/mês/ano hora:minuto:segundo
 def generate_date_time() -> str:
