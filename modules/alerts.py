@@ -2,13 +2,13 @@
 # Nome: Gabriel Ciriaco de Oliveira Silva  RM: 565916
 # Nome: Mariana Souza França               RM: 562353
 
-from utils import generate_date_time
+from modules.utils import generate_date_time
 
 alerts_list = []
 
 
-def notify_alert(water_level: str, users_list: list) -> dict:
-    alert = generate_alert(water_level)
+def notify_alert(status_water: str, users_list: list) -> dict:
+    alert = generate_alert(status_water)
     for user in users_list:
         alert_sent = send_alert(user)
         if alert_sent:
@@ -19,11 +19,11 @@ def notify_alert(water_level: str, users_list: list) -> dict:
     return alert
 
 
-def generate_alert(water_level: str) -> dict:
+def generate_alert(status_water: str) -> dict:
     return {
         "data e hora": generate_date_time(),
-        "nivel": water_level,
-        "mensagem": f"Nível {water_level} de água detectado!",
+        "nivel": status_water,
+        "mensagem": f"Nível {status_water} de água detectado!",
         "usuarios_notificados": []
     }
 
@@ -55,7 +55,7 @@ def try_others_contact_channel(failed_channel: str, message: str, email: str, ph
 
 
 def format_message_alert(username: str) -> str:
-    return f"[ALERTA] {username}, risco de enchente detectado!"
+    return f"[CUIDADO] {username}, risco de enchente detectado!"
 
 
 def send_email(destination: str, message: str) -> bool:

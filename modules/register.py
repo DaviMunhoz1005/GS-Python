@@ -2,14 +2,14 @@
 # Nome: Gabriel Ciriaco de Oliveira Silva  RM: 565916
 # Nome: Mariana Souza França               RM: 562353
 
-from utils import validate_email
-from utils import validate_phone
+from modules.utils import validate_email
+from modules.utils import validate_phone
 
 users_list = []
 
 def register_user(name:str, phone:str, email:str, contact_channel:str):
     if not validate_email(email):
-        print("Email inválido, escreva no formato 'seuemail@gmail.com'.")
+        print("Email inválido, escreva no formato 'seuemail123@gmail.com'.")
         return
     if not validate_phone(phone):
         print("Telefone inválido, escreva no formato '12345678910'.")
@@ -23,7 +23,7 @@ def register_user(name:str, phone:str, email:str, contact_channel:str):
     users_list.append(user)
     print("Usuário cadastrado com sucesso!")
 
-def list_users():
+def display_list_users():
     if not users_list:
         print("Nenhum usuário cadastrado!")
         return
@@ -31,4 +31,10 @@ def list_users():
         print(f"| Nome: {user['nome']} "
               f"| Telefone: {user['telefone']} "
               f"| Email: {user['email']} "
-              f"| Canal de Contato: {user['canal de contato']}")
+              f"| Canal de Contato: {user['canal de contato']} |")
+
+def list_users():
+    if not users_list:
+        print("Nenhum usuário cadastrado!")
+        return
+    return users_list

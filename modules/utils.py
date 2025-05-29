@@ -9,12 +9,12 @@ import re
 from datetime import datetime
 
 # valida se o formato do email está correto
-def validate_email(email:str) -> bool:
-    return bool(re.match(r"^[\w\.-]+@[\w\.-]+\.\w{2,}$", email))
+def validate_email(email: str) -> str:
+    return str(re.match(r"^[\w\.-]+@[\w\.-]+\.\w{2,}$", email.strip()))
 
 # valida se o formato do telefone está correto tendo apenas 11 dígitos
-def validate_phone(phone:str) -> bool:
-    return bool(re.match(r"^\d{11}$", phone))
+def validate_phone(phone: str) -> str:
+    return str(re.match(r"^\d{11}$", phone.strip()))
 
 # gera a data e hora do momento que foi chamado em formato dia/mês/ano hora:minuto:segundo
 def generate_date_time() -> str:

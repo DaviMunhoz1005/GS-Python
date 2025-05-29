@@ -5,8 +5,10 @@
 # Biblioteca para pegar valores aleatórios para a simulação do sensor
 import random
 
+preset_values_sensor = [0.5, 1.0, 1.5, 2.0]
+
 def read_water_level() -> float:
-    return round(random.uniform(0.0, 5.0), 2)
+    return preset_values_sensor[random.randint(0, 3)]
 
 def classify_water_level(level: float) -> str:
     if level < 1.0:
