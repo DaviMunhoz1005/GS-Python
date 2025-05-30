@@ -5,7 +5,7 @@
 # Import das funções dos módulos que foram criados
 from modules.monitoring import read_water_level, classify_water_level
 from modules.alerts import notify_alert, show_alerts_history
-from modules.register import register_user, display_list_users, list_users
+from modules.register import request_infos_user, display_list_users, list_users
 from modules.interface import show_menu
 
 # Biblioteca que permite manipular tempo e pausas no código
@@ -17,18 +17,17 @@ import os
 
 # Simula o painel em tempo real
 def realtime_sensor():
-    # Exemplo de local que o sensor esta implantando
-    observer_locartion = ["COHAB 2"]
+    observer_locartion = ["COHAB 2"] # Exemplo de locais que o sensor esta implantando
     for i in range(5):  # Simula 5 leituras aleatórias
         print(f"\n--- Leitura {i + 1} ---")
         water_level = read_water_level()
         status_water = classify_water_level(water_level)
         print(f"Nível da água: {water_level}m - Status: {status_water}")
-        if status_water != "OK":
+        if status_water != "OK": # Se o status for PERIGO ou ALERTA lança uma notificação para o user
             users_list = list_users()
             if users_list:
                 notify_alert(status_water, water_level, users_list, observer_locartion)
-        time.sleep(1)
+        time.sleep(1) # Pausa o programa por 1 segundo
 
 
 # Limpa o terminal conforme o sistema operacional
@@ -43,27 +42,24 @@ def clear_terminal():
 if __name__ == "__main__":
     while True:
         option = show_menu()
-        if option == "1":
-            clear_terminal()
-            realtime_sensor()
-        elif option == "2":
-            clear_terminal()
-            name = input("Nome e Sobrenome: ")
-            email = input("Email: ")
-            phone = input("Telefone: ")
-            contact_channel = input("Canal preferido (email/sms): ")
-            location = input("Localização (ex: COHAB 2): ")
-            register_user(name, email, phone, contact_channel, location)
-        elif option == "3":
-            clear_terminal()
-            display_list_users()
-        elif option == "4":
-            clear_terminal()
-            show_alerts_history()
-        elif option == "0":
-            clear_terminal()
-            print("Saindo...")
-            break
-        else:
-            clear_terminal()
-            print("Opção inválida.")
+        # Requer Python 3.10+ para usar match-case
+        match(option):
+            case "1":  # Simula o sensor
+                clear_terminal()
+                realtime_sensor()
+            case "2":  # Solicita informações e faz cadastro user
+                clear_terminal()
+                request_infos_user()
+            case "3":  # Mostra todos os users
+                clear_terminal()
+                display_list_users()
+            case "4":  # Mostra todos os alertas lançados
+                clear_terminal()
+                show_alerts_history()
+            case "0":  # Exit no programa
+                clear_terminal()
+                print("Saindo...")
+                break
+            case _:  # Opção Inválida do user
+                clear_terminal()
+                print("Opção inválida.")
