@@ -17,7 +17,7 @@ Este projeto apresenta uma **solução digital para monitoramento de enchentes**
 
 ## 🎥 Vídeo Demonstrativo
 
-📺 [Clique aqui para assistir ao vídeo demonstrativo do sistema]()
+📺 [Clique aqui para assistir ao vídeo demonstrativo do sistema](https://www.youtube.com/watch?v=p6SjZCdw574)
 
 ## 🧱 Estrutura Principal do Código
 
