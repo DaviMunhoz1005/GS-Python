@@ -23,19 +23,19 @@ Este projeto apresenta uma **solução digital para monitoramento de enchentes**
 
 - /GS-Python
     - /docs
-      - documentaçãoDaProposta.pdf
-      - entregaUx.pdf
-      - linkVídeo.txt
-    - /modules
-      - alerts.py
-      - interface.py
-      - monitoring.py
-      - register.py
-      - util.py
-    - .gitignore
-    - README.md
-    - LICENSE
-    - main.py
+        - Descrição Solução Simplificada.pdf
+        - Entrega UX.pdf
+        - linkVídeo.txt
+      - /modules
+        - alerts.py
+        - interface.py
+        - monitoring.py
+        - register.py
+        - util.py
+      - .gitignore
+      - README.md
+      - LICENSE
+      - main.py
 
 ## ▶️ Como Rodar o Código
 
@@ -53,6 +53,15 @@ Este projeto apresenta uma **solução digital para monitoramento de enchentes**
     ```bash
     python3 main.py
     ```
+
+## 🛠️ Como Simular no Wokwi
+1. Acesse o projeto no link abaixo.
+2. Clique em "Start Simulation".
+3. Use o slider do sensor ultrassônico para simular o nível da água subindo ou descendo.
+4. Observe a mudança no LCD, nos LEDs e no som do buzzer.
+
+✅ Link direto para simulação no Wokwi: 🔗 [Acessar a simulação no Wokwi](https://wokwi.com/projects/432133929837943809)
+
 ## 📘 Aprendizados do Projeto
 Durante o desenvolvimento deste projeto, aprendemos:
 
