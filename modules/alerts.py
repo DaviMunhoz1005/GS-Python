@@ -7,9 +7,11 @@ from modules.utils import generate_date_time
 alerts_list = []
 
 
-def notify_alert(status_water: str, water_level: float, users_list: list) -> dict:
+def notify_alert(status_water: str, water_level: float, users_list: list, observer_locartion: str) -> dict:
     alert = generate_alert(status_water, water_level)
     for user in users_list:
+        if not observer_locartion.__contains__(user["localizacao"]):
+            continue
         alert_sent = send_alert(user, status_water, alert["data e hora"])
         if alert_sent:
             alert["usuarios_notificados"].append(user["nome"])
