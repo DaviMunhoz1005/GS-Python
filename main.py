@@ -17,6 +17,8 @@ import os
 
 # Simula o painel em tempo real
 def realtime_sensor():
+    # Exemplo de local que o sensor esta implantando
+    observer_locartion = ["COHAB 2"]
     for i in range(5):  # Simula 5 leituras aleatórias
         print(f"\n--- Leitura {i + 1} ---")
         water_level = read_water_level()
@@ -25,7 +27,7 @@ def realtime_sensor():
         if status_water != "OK":
             users_list = list_users()
             if users_list:
-                notify_alert(status_water, water_level, users_list)
+                notify_alert(status_water, water_level, users_list, observer_locartion)
         time.sleep(1)
 
 
