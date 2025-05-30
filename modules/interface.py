@@ -10,5 +10,6 @@ def show_menu():
     print("2. Cadastrar novo morador")
     print("3. Listar moradores cadastrados")
     print("4. Exibir histórico de alertas")
+    print("5. Consultar Orientações")
     print("0. Sair")
     return input("Escolha uma opção: ")

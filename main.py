@@ -7,6 +7,7 @@ from modules.monitoring import read_water_level, classify_water_level
 from modules.alerts import notify_alert, show_alerts_history
 from modules.register import request_infos_user, display_list_users, list_users
 from modules.interface import show_menu
+from modules.orientations import show_orientations
 
 # Biblioteca que permite manipular tempo e pausas no código
 import time
@@ -56,6 +57,9 @@ if __name__ == "__main__":
             case "4":  # Mostra todos os alertas lançados
                 clear_terminal()
                 show_alerts_history()
+            case "5":  # Mostra Orientações para o user seguir em caso de enchente
+                clear_terminal()
+                show_orientations()
             case "0":  # Exit no programa
                 clear_terminal()
                 print("Saindo...")
