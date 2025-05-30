@@ -7,10 +7,10 @@ from modules.utils import generate_date_time
 alerts_list = []
 
 
-def notify_alert(status_water: str, users_list: list) -> dict:
-    alert = generate_alert(status_water)
+def notify_alert(status_water: str, water_level: float, users_list: list) -> dict:
+    alert = generate_alert(status_water, water_level)
     for user in users_list:
-        alert_sent = send_alert(user)
+        alert_sent = send_alert(user, status_water, alert["data e hora"])
         if alert_sent:
             alert["usuarios_notificados"].append(user["nome"])
         else:
@@ -19,17 +19,18 @@ def notify_alert(status_water: str, users_list: list) -> dict:
     return alert
 
 
-def generate_alert(status_water: str) -> dict:
+def generate_alert(status_water: str, water_level: float) -> dict:
     return {
         "data e hora": generate_date_time(),
-        "nivel": status_water,
+        "nível": water_level,
+        "status": status_water,
         "mensagem": f"Nível {status_water} de água detectado!",
         "usuarios_notificados": []
     }
 
 
-def send_alert(user: dict) -> bool:
-    message = format_message_alert(user['nome'])
+def send_alert(user: dict, status_water: str, date_time_alert: str) -> bool:
+    message = format_message_alert(user["nome"], status_water, date_time_alert)
     channel = user["canal de contato"]
     success = False
     if channel == "email":
@@ -54,17 +55,21 @@ def try_others_contact_channel(failed_channel: str, message: str, email: str, ph
     return False
 
 
-def format_message_alert(username: str) -> str:
-    return f"[CUIDADO] {username}, risco de enchente detectado!"
+def format_message_alert(username: str, status_water: str, date_time_alert: str) -> str:
+    messages = {
+        "ALERTA": f"{date_time_alert} [FIQUE ATENTO] {username}, variação anormal do nível do rio foi detectada!",
+        "PERIGO": f"{date_time_alert}[CUIDADO] {username}, risco de enchente detectado!",
+    }
+    return messages.get(status_water.upper(), f"[INFORMAÇÃO] {username}, monitoramento do rio em andamento.")
 
 
 def send_email(destination: str, message: str) -> bool:
-    print(f"[EMAIL] Enviado para {destination}: {message}")
+    print(f"[EMAIL] Enviado para {destination}: \n{message}")
     return True
 
 
 def send_sms(destination: str, message: str) -> bool:
-    print(f"[SMS] Enviado para {destination}: {message}")
+    print(f"[SMS] Enviado para {destination}: \n{message}")
     return True
 
 
@@ -73,4 +78,6 @@ def show_alerts_history():
         print("Nenhum alerta emitido!")
         return
     for alert in alerts_list:
-        print(f"| {alert["data e hora"]} | {alert["nivel"]} | {alert["mensagem"]} | {alert["usuarios_notificados"]} |")
+        print(
+            f"| {alert['data e hora']} | {alert['nível']}m | {alert['mensagem']} | {alert['usuarios_notificados']} |"
+        )
