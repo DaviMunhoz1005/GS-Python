@@ -32,7 +32,7 @@ def validate_phone(phone: str) -> bool:
 
 # valida se o formato do telefone está correto tendo apenas 11 dígitos
 def validate_contact_channel(contact_channel: str) -> bool:
-    return not (contact_channel != 'email' or contact_channel != 'sms')
+    return not (contact_channel != 'email' and contact_channel != 'sms')
 
 
 # gera a data e hora do momento que foi chamado em formato dia/mês/ano hora:minuto:segundo
