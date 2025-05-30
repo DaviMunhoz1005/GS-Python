@@ -12,21 +12,21 @@ from datetime import datetime
 # valida se o formato do nome está correto
 def validate_name(name: str) -> bool:
     name = name.strip()
-    pattern = r"^[A-Za-zÀ-ÖØ-öø-ÿ]+( [A-Za-zÀ-ÖØ-öø-ÿ]+)+$"
+    pattern = r"^[A-Za-zÀ-ÖØ-öø-ÿ]+( [A-Za-zÀ-ÖØ-öø-ÿ]+)+$" # Padrão String String
     return bool(re.match(pattern, name))
 
 
 # valida se o formato do email está correto
 def validate_email(email: str) -> bool:
     email = email.strip()
-    pattern = r'^[\w\.-]+@[\w\.-]+\.\w{3,}$'
+    pattern = r'^[\w\.-]+@[\w\.-]+\.\w{3,}$' # Padrão stringComDigito@stringComDigito.stringComDigito
     return bool(re.match(pattern, email))
 
 
 # valida se o formato do telefone está correto tendo apenas 11 dígitos
 def validate_phone(phone: str) -> bool:
     phone = phone.strip()
-    pattern = r'^\d{11}$'
+    pattern = r'^\d{11}$' # Padrão 11 números inteiros
     return bool(re.match(pattern, phone))
 
 
@@ -38,10 +38,10 @@ def validate_contact_channel(contact_channel: str) -> bool:
 # valida se o formato da localização está correto tendo pelo menos uma string de início
 def validate_location(location: str) -> bool:
     location = location.strip()
-    pattern = r"^[A-Za-zÀ-ÖØ-öø-ÿ0-9]+([ \-]?[A-Za-zÀ-ÖØ-öø-ÿ0-9]*)*$"
+    pattern = r"^[A-Za-zÀ-ÖØ-öø-ÿ0-9]+([ \-]?[A-Za-zÀ-ÖØ-öø-ÿ0-9]*)*$" # Padrão String + StringOpcionalComSemDigitos
     return bool(re.match(pattern, location))
 
 
-# gera a data e hora do momento que foi chamado em formato dia/mês/ano hora:minuto:segundo
+# gera a data e hora do momento que foi chamado
 def generate_date_time() -> str:
-    return datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+    return datetime.now().strftime("%d/%m/%Y %H:%M:%S") # Padrão dia/mês/ano hora:minuto:segundo
