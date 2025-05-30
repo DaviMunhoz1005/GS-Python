@@ -45,8 +45,8 @@ Este projeto apresenta uma **solução digital para monitoramento de enchentes**
 
 2. **Clonar o repositório**
     ```bash
-    git clone https://github.com/seu-usuario/monitoramento-enchentes.git
-    cd monitoramento-enchentes
+    git clone https://github.com/DaviMunhoz1005/GS-Python.git
+    cd GS-Python
     ```
 3. Executar o sistema
 
