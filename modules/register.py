@@ -2,11 +2,11 @@
 # Nome: Gabriel Ciriaco de Oliveira Silva  RM: 565916
 # Nome: Mariana Souza França               RM: 562353
 
-from modules.utils import validate_name, validate_email, validate_phone, validate_contact_channel
+from modules.utils import validate_name, validate_email, validate_phone, validate_contact_channel, validate_location
 
 users_list = []
 
-def register_user(name:str, email:str, phone:str, contact_channel:str):
+def register_user(name:str, email:str, phone:str, contact_channel:str, location: str):
     if not validate_name(name):
         print("Nome inválido, escreva seu Nome e Sobrenome.")
         return
@@ -19,10 +19,14 @@ def register_user(name:str, email:str, phone:str, contact_channel:str):
     if not validate_contact_channel(contact_channel):
         print("Canal de contato inválido, escreva 'email' ou 'sms'.")
         return
+    if not validate_location(location):
+        print("Localização inválido, escreva pelo menos o nome do lugar.")
+        return
     user = {
         "nome": name,
         "telefone": phone,
         "email": email,
+        "localizacao": location,
         "canal de contato": contact_channel.lower()
     }
     users_list.append(user)
@@ -36,6 +40,7 @@ def display_list_users():
         print(f"| Nome: {user['nome']} "
               f"| Telefone: {user['telefone']} "
               f"| Email: {user['email']} "
+              f"| Localização: {user['localizacao']} "
               f"| Canal de Contato: {user['canal de contato']} |")
 
 def list_users():

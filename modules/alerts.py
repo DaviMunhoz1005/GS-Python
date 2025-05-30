@@ -30,7 +30,7 @@ def generate_alert(status_water: str, water_level: float) -> dict:
 
 
 def send_alert(user: dict, status_water: str, date_time_alert: str) -> bool:
-    message = format_message_alert(user["nome"], status_water, date_time_alert)
+    message = format_message_alert(user["nome"], status_water, date_time_alert, user["localizacao"])
     channel = user["canal de contato"]
     success = False
     if channel == "email":
@@ -55,10 +55,10 @@ def try_others_contact_channel(failed_channel: str, message: str, email: str, ph
     return False
 
 
-def format_message_alert(username: str, status_water: str, date_time_alert: str) -> str:
+def format_message_alert(username: str, status_water: str, date_time_alert: str, location: str) -> str:
     messages = {
-        "ALERTA": f"{date_time_alert} [FIQUE ATENTO] {username}, variação anormal do nível do rio foi detectada!",
-        "PERIGO": f"{date_time_alert}[CUIDADO] {username}, risco de enchente detectado!",
+        "ALERTA": f"{date_time_alert} [FIQUE ATENTO] {username}, variação anormal do nível do rio próximo à {location} foi detectada!",
+        "PERIGO": f"{date_time_alert}[CUIDADO] {username}, risco de enchente próximo à {location} detectado!",
     }
     return messages.get(status_water.upper(), f"[INFORMAÇÃO] {username}, monitoramento do rio em andamento.")
 

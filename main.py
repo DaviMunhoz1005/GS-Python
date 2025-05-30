@@ -50,7 +50,8 @@ if __name__ == "__main__":
             email = input("Email: ")
             phone = input("Telefone: ")
             contact_channel = input("Canal preferido (email/sms): ")
-            register_user(name, email, phone, contact_channel)
+            location = input("Localização (ex: COHAB 2): ")
+            register_user(name, email, phone, contact_channel, location)
         elif option == "3":
             clear_terminal()
             display_list_users()
