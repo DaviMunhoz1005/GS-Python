@@ -30,6 +30,7 @@ Este projeto apresenta uma **solução digital para monitoramento de enchentes**
         - alerts.py
         - interface.py
         - monitoring.py
+        - orientations.py
         - register.py
         - util.py
       - .gitignore

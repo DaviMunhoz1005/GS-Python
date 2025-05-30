@@ -65,8 +65,10 @@ def try_others_contact_channel(failed_channel: str, message: str, email: str, ph
 # Formata a mensagem de alerta para o user
 def format_message_alert(username: str, status_water: str, date_time_alert: str, location: str) -> str:
     messages = {
-        "ALERTA": f"{date_time_alert} [FIQUE ATENTO] {username}, variação anormal do nível do rio próximo à {location} foi detectada!",
-        "PERIGO": f"{date_time_alert}[CUIDADO] {username}, risco de enchente próximo à {location} detectado!",
+        "ALERTA": f"{date_time_alert} [FIQUE ATENTO] {username}, variação anormal do nível do rio "
+                  f"próximo à {location} foi detectada!",
+        "PERIGO": f"{date_time_alert}[CUIDADO] {username}, risco de enchente próximo à {location} detectado!\n"
+                  f"(Aperte 5 no menu para consultar orientações em caso de enchente)",
     }
     return messages.get(status_water.upper(), f"[INFORMAÇÃO] {username}, monitoramento do rio em andamento.")
 
